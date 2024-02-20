@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div className = " bg-white h-screen w-screen">
-        <nav className = "flex justify-between w-full p-5">
+        <nav className = "flex justify-between w-full px-7 py-4" >
           <div className = 'flex items-center gap-4'>
             <img src = { logo } alt="" className = 'w-10 h-10' />
             <h3> CasaSwap </h3>
@@ -18,10 +18,10 @@ function App() {
               About Us
             </a>
             <button>
-              LOG IN
+              Log In
             </button>
             <button>
-              REGISTER FOR FREE
+              Register For FREE
             </button>
           </div>
         </nav>
