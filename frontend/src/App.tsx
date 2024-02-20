@@ -25,6 +25,9 @@ function App() {
             </button>
           </div>
         </nav>
+        <div className=' py-32 flex w-full'>
+          <p className='text-center mr-auto ml-auto text-3xl font-semibold'> See more of the world without breaking the bank by joining <br /> Our top home exchange community globally.</p>
+        </div>
       </div>
     </>
   )
