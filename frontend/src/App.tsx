@@ -25,8 +25,12 @@ function App() {
             </button>
           </div>
         </nav>
-        <div className=' py-32 flex w-full'>
-          <p className='text-center mr-auto ml-auto text-3xl font-semibold'> See more of the world without breaking the bank by joining <br /> Our top home exchange community globally.</p>
+        <div className=' py-32 w-full mr-auto ml-auto grid'>
+          <p className='text-center  text-3xl font-semibold'> See more of the world without breaking the bank by joining <br /> Our top home exchange community globally.</p>
+          <div className='mr-auto ml-auto py-12 flex '>
+            <input type="text" className=' w-[340px] border p-4 rounded-s-2xl ' placeholder= 'What destination interests you?' />
+            <button className = 'border p-4 pr-7 rounded-e-2xl' > Search </button>
+          </div>
         </div>
       </div>
     </>
