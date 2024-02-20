@@ -25,7 +25,7 @@ function App() {
             </button>
           </div>
         </nav>
-        <div className=' py-32 w-full mr-auto ml-auto grid'>
+        <div className=' py-44 w-full mr-auto ml-auto grid'>
           <p className='text-center  text-3xl font-semibold'> See more of the world without breaking the bank by joining <br /> Our top home exchange community globally.</p>
           <div className='mr-auto ml-auto py-12 flex '>
             <input type="text" className=' w-[340px] border p-4 rounded-s-2xl ' placeholder= 'What destination interests you?' />
