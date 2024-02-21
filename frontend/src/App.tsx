@@ -26,10 +26,10 @@ register();
 const itemVariants: Variants = {
   open: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: { type: "spring", stiffness: 300, damping: 24 },
   },
-  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+  closed: { opacity: 0, x: 20, transition: { duration: 0.3 } },
 };
 
 function App() {
@@ -52,10 +52,25 @@ function App() {
           </div>
 
           <div className=" flex items-center gap-6 max-sm:hidden ">
-            <a href="/"> Pricing </a>
-            <a href="/"> About Us </a>
-            <button> Log In </button>
-            <button className=" bg-[#F7931A] text-white outline-0 border-[#F7931A] border px-3 py-2 rounded-xl ">
+            <a
+              href="/"
+              className="hover:text-[#F7931A] text-white hover:scale-110 duration-75"
+            >
+              {" "}
+              Pricing{" "}
+            </a>
+            <a
+              href="/"
+              className="hover:text-[#F7931A] text-white hover:scale-110 duration-75"
+            >
+              {" "}
+              About Us{" "}
+            </a>
+            <button className="hover:text-[#F7931A] text-white hover:scale-110 duration-75">
+              {" "}
+              Log In{" "}
+            </button>
+            <button className=" bg-[#F7931A] hover:scale-105 duration-75 text-white outline-0 border-[#F7931A] border px-3 py-2 rounded-xl ">
               Register For FREE
             </button>
           </div>
@@ -81,19 +96,29 @@ function App() {
         </nav>
 
         {openSide && (
-          <motion.nav
-            initial={false}
-            animate={openSide ? "open" : "closed"}
-            className="menu"
-          >
+          <nav className="menu">
             <div
               className="hidden max-sm:block absolute inset-0 w-screen h-screen bg-black opacity-70 z-10 "
               onClick={() => setOpenSide(false)}
             ></div>
 
-            <div className="hidden max-sm:block absolute top-0 right-0 bg-white rounded-es-lg shadow-xl h-56 w-44 z-20 pt-2">
+            <motion.div
+              className="hidden max-sm:block absolute top-0 right-0 bg-white rounded-es-lg shadow-xl h-56 w-44 z-20 pt-2"
+              initial={{
+                x: 200,
+                opacity: 0,
+              }}
+              // animate={openSide ? "open" : "closed"}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: {
+                  duration: 0.5,
+                },
+              }}
+            >
               <button
-                className="absolute right-0 top-0 p-3 border"
+                className="absolute right-0 top-0 p-3"
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenSide(!openSide);
@@ -115,8 +140,10 @@ function App() {
                 </svg>
               </button>
 
-              <motion.div
+              <motion.ul
                 className="flex flex-col pl-3 mt-10 pr-5 text-sm"
+                initial={false}
+                animate={openSide ? "open" : "closed"}
                 variants={{
                   open: {
                     clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -139,50 +166,42 @@ function App() {
                 }}
                 style={{ pointerEvents: openSide ? "auto" : "none" }}
               >
-                <motion.a
-                  href="/"
-                  className="py-1 pl-2"
+                <motion.li
+                  className="py-1 pl-2 hover:text-[#F7931A]"
                   variants={itemVariants}
                 >
-                  {" "}
-                  Pricing{" "}
-                </motion.a>
+                  <a href="/"> Pricing </a>
+                </motion.li>
 
                 <div className="w-full h-0.5 my-1 bg-slate-400 opacity-40"></div>
 
-                <motion.a
-                  href="/"
-                  className="py-1 pl-2"
+                <motion.li
+                  className="py-1 pl-2 hover:text-[#F7931A]"
                   variants={itemVariants}
                 >
-                  {" "}
-                  About Us{" "}
-                </motion.a>
+                  <a href="/"> About Us </a>
+                </motion.li>
 
                 <div className="w-full h-0.5 my-1 bg-slate-400 opacity-40"></div>
 
-                <motion.a
-                  href="/"
-                  className="py-1 pl-2"
+                <motion.li
+                  className="py-1 pl-2 hover:text-[#F7931A]"
                   variants={itemVariants}
                 >
-                  {" "}
-                  Log In{" "}
-                </motion.a>
+                  <a href="/"> Log In </a>
+                </motion.li>
 
                 <div className="w-full h-0.5 my-1 bg-slate-400 opacity-40"></div>
 
-                <motion.a
-                  href="/"
-                  className="py-1 pl-2"
+                <motion.li
+                  className="py-1 pl-2 hover:text-[#F7931A]"
                   variants={itemVariants}
                 >
-                  {" "}
-                  Register for free{" "}
-                </motion.a>
-              </motion.div>
-            </div>
-          </motion.nav>
+                  <a href="/"> Register for free </a>
+                </motion.li>
+              </motion.ul>
+            </motion.div>
+          </nav>
         )}
 
         <div className=" py-44 max-sm:py-32 w-full mr-auto ml-auto grid">
