@@ -212,7 +212,7 @@ function App() {
         )}
 
         <div className=" py-44 max-sm:py-32 w-full mr-auto ml-auto grid">
-          <p className="text-center  text-3xl max-sm:text-lg font-semibold text-wrap w-[860px] max-sm:w-[360px] ml-auto mr-auto">
+          <p className="text-center text-3xl max-sm:text-lg font-semibold text-wrap w-[860px] max-sm:w-[360px] ml-auto mr-auto">
             See more of the world without breaking the bank by joining Our top
             home exchange community globally.
           </p>
