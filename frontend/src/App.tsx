@@ -86,20 +86,26 @@ function App() {
             animate={openSide ? "open" : "closed"}
             className="menu"
           >
-            <div className="hidden max-sm:block absolute inset-0 w-screen h-screen bg-black opacity-70 z-10 "></div>
+            <div
+              className="hidden max-sm:block absolute inset-0 w-screen h-screen bg-black opacity-70 z-10 "
+              onClick={() => setOpenSide(false)}
+            ></div>
 
             <div className="hidden max-sm:block absolute top-0 right-0 bg-white rounded-es-lg shadow-xl h-56 w-44 z-20 pt-2">
               <button
-                onClick={() => setOpenSide(false)}
-                className="absolute right-0 top-0 p-2"
+                className="absolute right-0 top-0 p-3 border"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenSide(!openSide);
+                }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth="1.5"
+                  strokeWidth="2"
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-6 h-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -109,33 +115,72 @@ function App() {
                 </svg>
               </button>
 
-              <div className="flex flex-col pl-3 pt-10 pr-5 text-sm">
-                <a href="/" className="py-1 pl-2">
+              <motion.div
+                className="flex flex-col pl-3 mt-10 pr-5 text-sm"
+                variants={{
+                  open: {
+                    clipPath: "inset(0% 0% 0% 0% round 10px)",
+                    transition: {
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.7,
+                      delayChildren: 0.3,
+                      staggerChildren: 0.05,
+                    },
+                  },
+                  closed: {
+                    clipPath: "inset(10% 50% 90% 50% round 10px)",
+                    transition: {
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.3,
+                    },
+                  },
+                }}
+                style={{ pointerEvents: openSide ? "auto" : "none" }}
+              >
+                <motion.a
+                  href="/"
+                  className="py-1 pl-2"
+                  variants={itemVariants}
+                >
                   {" "}
                   Pricing{" "}
-                </a>
+                </motion.a>
 
                 <div className="w-full h-0.5 my-1 bg-slate-400 opacity-40"></div>
 
-                <a href="/" className="py-1 pl-2">
+                <motion.a
+                  href="/"
+                  className="py-1 pl-2"
+                  variants={itemVariants}
+                >
                   {" "}
                   About Us{" "}
-                </a>
+                </motion.a>
 
                 <div className="w-full h-0.5 my-1 bg-slate-400 opacity-40"></div>
 
-                <a href="/" className="py-1 pl-2">
+                <motion.a
+                  href="/"
+                  className="py-1 pl-2"
+                  variants={itemVariants}
+                >
                   {" "}
                   Log In{" "}
-                </a>
+                </motion.a>
 
                 <div className="w-full h-0.5 my-1 bg-slate-400 opacity-40"></div>
 
-                <a href="/" className="py-1 pl-2">
+                <motion.a
+                  href="/"
+                  className="py-1 pl-2"
+                  variants={itemVariants}
+                >
                   {" "}
                   Register for free{" "}
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             </div>
           </motion.nav>
         )}
