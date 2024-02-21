@@ -27,9 +27,15 @@ const itemVariants: Variants = {
   open: {
     opacity: 1,
     x: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 24,
+      duration: 0.3,
+      delay: 0.2,
+    },
   },
-  closed: { opacity: 0, x: 20, transition: { duration: 0.3 } },
+  closed: { opacity: 0, x: 200, transition: { duration: 0.3 } },
 };
 
 function App() {
@@ -54,19 +60,19 @@ function App() {
           <div className=" flex items-center gap-6 max-sm:hidden ">
             <a
               href="/"
-              className="hover:text-[#F7931A] text-white hover:scale-110 duration-75"
+              className="hover:text-[#F7931A] text-[#5e696c] hover:scale-110 duration-75"
             >
               {" "}
               Pricing{" "}
             </a>
             <a
               href="/"
-              className="hover:text-[#F7931A] text-white hover:scale-110 duration-75"
+              className="hover:text-[#F7931A] text-[#5e696c] hover:scale-110 duration-75"
             >
               {" "}
               About Us{" "}
             </a>
-            <button className="hover:text-[#F7931A] text-white hover:scale-110 duration-75">
+            <button className="hover:text-[#F7931A] text-[#5e696c] hover:scale-110 duration-75">
               {" "}
               Log In{" "}
             </button>
@@ -96,7 +102,11 @@ function App() {
         </nav>
 
         {openSide && (
-          <nav className="menu">
+          <motion.nav
+            className="menu"
+            initial={false}
+            animate={openSide ? "open" : "closed"}
+          >
             <div
               className="hidden max-sm:block absolute inset-0 w-screen h-screen bg-black opacity-70 z-10 "
               onClick={() => setOpenSide(false)}
@@ -108,12 +118,11 @@ function App() {
                 x: 200,
                 opacity: 0,
               }}
-              // animate={openSide ? "open" : "closed"}
               animate={{
                 x: 0,
                 opacity: 1,
                 transition: {
-                  duration: 0.5,
+                  duration: 0.3,
                 },
               }}
             >
@@ -142,8 +151,6 @@ function App() {
 
               <motion.ul
                 className="flex flex-col pl-3 mt-10 pr-5 text-sm"
-                initial={false}
-                animate={openSide ? "open" : "closed"}
                 variants={{
                   open: {
                     clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -201,7 +208,7 @@ function App() {
                 </motion.li>
               </motion.ul>
             </motion.div>
-          </nav>
+          </motion.nav>
         )}
 
         <div className=" py-44 max-sm:py-32 w-full mr-auto ml-auto grid">
